@@ -1,7 +1,7 @@
 from django.db import models
 
 class Post(models.Model):
-    # some changes for commit - ok
+    # some changes for commit - testing
     text = models.TextField()
 
     def __str__(self):
