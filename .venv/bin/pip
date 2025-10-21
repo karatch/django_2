@@ -1,4 +1,4 @@
-#!/home/alexey/PycharmProjects/django/django_2/.venv/bin/python3
+#!/home/alex/Python/PythonProject/Django_Second_Project/.venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
