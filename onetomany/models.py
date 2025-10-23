@@ -10,19 +10,25 @@ class Product(models.Model):
     price = models.IntegerField()
 
 
-class User(models.Model):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
+class Buyer(models.Model):
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=40)
+    email = models.EmailField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['created_at',]
 
 
-class Blog(models.Model):
-    title = models.CharField(max_length=255)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    created = models.DateTimeField()
+class Brand(models.Model):
+    name = models.CharField(max_length=200)
 
 
-class Topic(models.Model):
-    title = models.CharField(max_length=255)
-    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
-    created = models.DateTimeField()
-    likes = models.ManyToManyField(User)
+class Car(models.Model):
+    model = models.CharField(max_length=200)
+    brand = models.ForeignKey(Brand, on_delete=models.PROTECT)
+    factory_year = models.IntegerField(blank=True, null=True)
+    model_year = models.IntegerField(blank=True, null=True)
+    plate = models.CharField(max_length=10, blank=True, null=True)
+    value = models.FloatField(blank=True, null=True)
+    buyers = models.ManyToManyField(Buyer)
