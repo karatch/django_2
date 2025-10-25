@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from orm_model.models import Worker
 
-# Create your views here.
+def index(request):
+    people = Worker.objects.all().order_by('-id')
+    return render(request, 'index.html', {'people': people})
