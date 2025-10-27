@@ -5,17 +5,19 @@
     <title>Django - SecondProject</title>
 </head>
 <body>
-<table>
+{% if people %}
+<h3>Список пользователей</h3>
+<ul>
 {% for person in people %}
-    <tr>
-        <td>{{ person.id }}</td>
-        <td>{{ person.first_name }}</td>
-        <td>{{ person.last_name }}</td>
-        <td>{{ person.age }}</td>
-        <td>{{ person.created }}</td>
-        <td>{{ person.work_experience }}</td>
-    </tr>
+    <li>
+        {{ person.first_name }}
+        {{ person.last_name }}
+
+    </li>
 {% endfor %}
-</table>
+</ul>
+{% else %}
+<h3>Пользователей нет</h3>
+{% endif %}
 </body>
 </html>
